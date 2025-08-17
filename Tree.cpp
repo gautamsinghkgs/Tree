@@ -52,6 +52,16 @@ void postorder(node *root){
     cout<<root->data<<" ";
 }
 
+bool search(node *root,int key){
+    if(root==0){
+        return false;
+    }
+    if(root->data == key){
+        return true;
+    }
+    return search(root->left,key) || search(root->right,key);
+}
+
 int main(){
     node *root = 0;
     root = create();
@@ -62,4 +72,13 @@ int main(){
     cout<<"\nPostorder Traversal is : ";
     postorder(root);
 
+    int key;
+    cout<<"\nEnter data to search : ";
+    cin>>key;
+    if(search(root,key)){
+        cout<<key<<" is found in the tree"<<endl;
+    }
+    else{
+        cout<<key<<" is not found in the tree"<<endl;
+    }
 }
